@@ -1,4 +1,4 @@
-# Hallucination Detection in Large Language Models: A Hybrid Framework for Reliable AI Responses
+# HARMONIQ: Hybrid Adaptive Reliability & Multi-Signal Orchestration Network for Interpretable Quality Verification
 
 An academic research framework proposing a **multi-signal, claim-level hybrid verification architecture** to detect hallucinations in Large Language Models (LLMs).
 
@@ -8,7 +8,7 @@ An academic research framework proposing a **multi-signal, claim-level hybrid ve
 
 Large Language Models (ChatGPT, Claude, Gemini, Llama, Qwen) frequently generate fluent and confident responses that contain fabricated, unsupported, or contradictory claims (**LLM hallucinations**). Because high confidence does not guarantee factual correctness, single-signal detectors (e.g., confidence-only or surface-similarity) often fail.
 
-This project introduces a **Hybrid Hallucination Detection Framework** that:
+**HARMONIQ** (**H**ybrid **A**daptive **R**eliability & **M**ulti-signal **O**rchestration **N**etwork for **I**nterpretable **Q**uality) introduces a multi-signal verification layer that:
 1. Decomposes LLM responses into verifiable **atomic claims/facts**.
 2. Evaluates each claim through **four complementary verification signals**:
    - **$C$ — Confidence Analysis & Calibrated Uncertainty**: Perplexity, entropy, and epistemic hedge calibration (*Trust Me, I'm Wrong*, 2025).
@@ -60,7 +60,21 @@ This project introduces a **Hybrid Hallucination Detection Framework** that:
 
 ---
 
-## 3. Repository Structure
+## 3. Comparison with Existing Frameworks
+
+| Framework | Primary Venue / Year | Detection Granularity | Verification Signals Used | Decision Mechanism | External Grounding | Explainability & Localization |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **SelfCheckGPT** | *EMNLP 2023* | Sentence-level | Sampling consistency only | Average consistency score cutoff | None (zero-resource) | Sentence-level numerical score |
+| **HaluEval** | *EMNLP 2023* | Passage / QA-level | Grounded reference matching | LLM-as-a-judge / exact check | Static dataset reference | Binary verdict (Hallucinated Yes/No) |
+| **REFIND** | *arXiv 2025* | Sub-sentence span | Retrieval Sensitivity (CSR) | Sensitivity ratio threshold | Retrieved documents / search | Span-level boundary localization |
+| **FactBench / VERIFY** | *EMNLP 2024–2025* | Sentence / Fact-level | Web retrieval + LLM verification | 3-way classifier (`S`/`U`/`U`) | Dynamic Google/Web Search | Evidence passage citations |
+| **PROBE** | *Findings of ACL 2026* | Process-stage level | Multi-step pipeline inspection | 4-step pipeline judge LLM | RAG context documents | Step-by-step process attribution |
+| **FactSelfCheck** | *Findings of EACL 2026*| Fact / Triple-level | KG triples + Sampling consistency | Graph alignment / Text match | None (black-box sampling) | Fact-level triple inconsistency |
+| **HARMONIQ (Ours)** | **Proposed (2026)** | **Claim & Atomic Fact** (with char spans) | **All 4 Complementary Signals:**<br>1. Confidence ($C$)<br>2. Retrieval ($R$)<br>3. Semantic Entailment ($S$)<br>4. Self-Verification ($V$) | **Adaptive Multi-Signal Fusion** (Linear Weighted + Learned Meta-Classifiers) | **Multi-Source Hybrid** (Provided RAG, Corpus & Wikipedia) | **Comprehensive Report**: Claim-level verdict, span highlighting, signal breakdown & plain-language reason |
+
+---
+
+## 4. Repository Structure
 
 ```text
 .
