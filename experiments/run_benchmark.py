@@ -91,7 +91,10 @@ def main():
         final_df.to_csv(csv_path, index=False)
         with open(md_path, "w", encoding="utf-8") as f:
             f.write("# Benchmark Comparison Results\n\n")
-            f.write(final_df.to_markdown(index=False))
+            try:
+                f.write(final_df.to_markdown(index=False))
+            except Exception:
+                f.write(final_df.to_string(index=False))
 
         print(f"\n=================================================================")
         print(f"Benchmark results saved successfully:")

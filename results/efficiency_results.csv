@@ -1,0 +1,9 @@
+Metric,Value
+Total Evaluated Responses,20.0
+Total Evaluated Claims,20.0
+Mean Latency per Response (sec),0.0066
+P50 Median Latency (sec),0.0062
+P95 Latency (sec),0.0072
+Mean Latency per Claim (sec),0.0066
+Throughput (Responses/sec),152.31
+Mean Words per Response,5.3

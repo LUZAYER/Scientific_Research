@@ -98,7 +98,10 @@ def main():
     df_clean.to_csv(csv_path, index=False)
     with open(md_path, "w", encoding="utf-8") as f:
         f.write("# Systematic Ablation Study Results\n\n")
-        f.write(df_clean.to_markdown(index=False))
+        try:
+            f.write(df_clean.to_markdown(index=False))
+        except Exception:
+            f.write(df_clean.to_string(index=False))
 
     print(f"\nAblation results saved to:\n  {csv_path}\n  {md_path}")
 
